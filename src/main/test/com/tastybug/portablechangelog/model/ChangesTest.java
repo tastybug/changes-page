@@ -44,17 +44,6 @@ class ChangesTest {
     }
 
 
-    @Test
-    void getItemsByLocale_returns_fallback_items_if_no_() {
-        ChangeItem expectedChangeItem = aChangeItem(Locale.CANADA, "bla");
-        ChangeItem toBeFilteredChangeItem = aChangeItem(Locale.US, "blubb");
-        Changes changes = aChanges(expectedChangeItem, toBeFilteredChangeItem);
-
-        List<ChangeItem> changeItems = changes.getItemsByLocale(Locale.GERMAN);
-
-        assertThat(changeItems).isEmpty();
-    }
-
 
     private Changes aChanges(ChangeItem... changeItems) {
         return new Changes("1.2.3", Arrays.asList(changeItems));

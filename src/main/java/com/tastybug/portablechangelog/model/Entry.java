@@ -4,15 +4,15 @@ import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Optional;
 
-public class ChangeItem {
+public class Entry {
 
     private Optional<Locale> locale;
 
     private String description;
 
-    private LinkedList<ExternalLink> links;
+    private LinkedList<Link> links;
 
-    public ChangeItem(Optional<Locale> locale, String description) {
+    public Entry(Optional<Locale> locale, String description) {
         this.locale = locale;
         this.description = description;
     }
@@ -25,7 +25,7 @@ public class ChangeItem {
         return description;
     }
 
-    public LinkedList<ExternalLink> getLinks() {
+    public LinkedList<Link> getLinks() {
         return links;
     }
 

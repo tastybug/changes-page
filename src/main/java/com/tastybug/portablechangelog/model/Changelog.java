@@ -7,27 +7,27 @@ import java.util.Locale;
 
 import static java.util.stream.Collectors.toList;
 
-public class Changes {
+public class Changelog {
 
     private String versionString;
 
-    private List<ChangeItem> changeItems;
+    private List<Entry> entries;
 
-    public Changes(String versionString, List<ChangeItem> changeItems) {
+    public Changelog(String versionString, List<Entry> entries) {
         Checker.ensureNotEmpty(versionString, "Null/empty versionString given.");
         this.versionString = versionString;
-        this.changeItems = changeItems;
+        this.entries = entries;
     }
 
-    public List<ChangeItem> getItemsByLocale(Locale expectedLocale) {
-        return changeItems
+    public List<Entry> getEntryByLocale(Locale expectedLocale) {
+        return entries
                 .stream()
                 .filter(item -> !item.getLocale().isPresent()
                         || hasMatchingLocale(item, expectedLocale))
                 .collect(toList());
     }
 
-    private boolean hasMatchingLocale(ChangeItem changeItem, Locale compareAgainst) {
-        return compareAgainst.equals(changeItem.getLocale().orElse(null));
+    private boolean hasMatchingLocale(Entry entry, Locale compareAgainst) {
+        return compareAgainst.equals(entry.getLocale().orElse(null));
     }
 }

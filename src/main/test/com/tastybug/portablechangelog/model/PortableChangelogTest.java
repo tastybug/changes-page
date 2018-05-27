@@ -20,20 +20,20 @@ class PortableChangelogTest {
     }
 
     @Test
-    void getChangesForVersion_returns_Changes_for_a_given_version_from_repository() {
-        Changes expectedChanges = mock(Changes.class);
+    void getChangelogForVersion_returns_Changes_for_a_given_version_from_repository() {
+        Changelog expectedChangelog = mock(Changelog.class);
         String aVersion = "1.5";
-        when(changelogRepository.getChangesByVersion(aVersion)).thenReturn(expectedChanges);
+        when(changelogRepository.getChangelogForVersion(aVersion)).thenReturn(expectedChangelog);
 
-        Changes changes = portableChangelog.getChangesForVersion(aVersion);
+        Changelog changelog = portableChangelog.getChangelogForVersion(aVersion);
 
-        assertThat(changes).isEqualTo(expectedChanges);
+        assertThat(changelog).isEqualTo(expectedChangelog);
     }
 
     @Test
-    void getChangesForVersion_throws_IllegalArgumentException_if_null_version_info_is_provided() {
+    void getChangelogForVersion_throws_IllegalArgumentException_if_null_version_info_is_provided() {
         try {
-            portableChangelog.getChangesForVersion(null);
+            portableChangelog.getChangelogForVersion(null);
             fail("Expected exception.");
         } catch (Exception e) {
             assertThat(e).isInstanceOf(IllegalArgumentException.class).withFailMessage("No version given.");
@@ -41,9 +41,9 @@ class PortableChangelogTest {
     }
 
     @Test
-    void getChangesForVersion_throws_IllegalArgumentException_if_empty_version_info_is_provided() {
+    void getChangelogForVersion_throws_IllegalArgumentException_if_empty_version_info_is_provided() {
         try {
-            portableChangelog.getChangesForVersion("");
+            portableChangelog.getChangelogForVersion("");
             fail("Expected exception.");
         } catch (Exception e) {
             assertThat(e).isInstanceOf(IllegalArgumentException.class).withFailMessage("No version given.");

@@ -1,6 +1,6 @@
 package com.tastybug.portablechangelog.model;
 
-public class ExternalLink {
+public class Link {
 
     private String url;
 

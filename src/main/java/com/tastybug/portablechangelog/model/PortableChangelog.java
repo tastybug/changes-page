@@ -7,16 +7,16 @@ public class PortableChangelog {
     ChangelogRepository changelogRepository;
 
     public PortableChangelog() {
-        this(new ChangesClasspathSlurper());
+        this(new ClasspathSlurper());
     }
 
     public PortableChangelog(ChangelogRepository changelogRepository) {
         this.changelogRepository = changelogRepository;
     }
 
-    public Changes getChangesForVersion(String version) {
+    public Changelog getChangelogForVersion(String version) {
         ensureNotEmpty(version, "No version given.");
 
-        return changelogRepository.getChangesByVersion(version);
+        return changelogRepository.getChangelogForVersion(version);
     }
 }

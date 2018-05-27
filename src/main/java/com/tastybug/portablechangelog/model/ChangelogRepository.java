@@ -2,7 +2,7 @@ package com.tastybug.portablechangelog.model;
 
 public interface ChangelogRepository {
 
-    Changes getChangesByVersion(String version);
+    Changelog getChangelogForVersion(String version);
 
-    Changes getChangesRecursive(String latestVersion, String notAfter);
+    Changelog getChangesRecursive(String latestVersion, String notAfter);
 }
